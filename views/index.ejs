@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+    <head>
+
+        <!--Always lode angular first and then all other scripts-->
+        <!--<link rel="stylesheet" href="stylesheets/css/bootstrap.css">-->
+        <link rel="stylesheet" href="stylesheets/simpleFormStyle.css">
+        <!--<script type="text/javascript" src="angular.min.js"></script>-->
+        <!--<script type="text/javascript" src="angular-route.js"></script>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
+        <script type="text/javascript" src="javascripts/submitApp.js"></script>
+
+
+    </head>
+    <!--<style>body{font-family:"Arial";background-color:#E2E2DC}</style>-->
+    <body ng-app="patientInfo" ng-controller="HomeController"  >
+        <div >
+            <form name="Form" >
+                <h1>Patient Information Entry form</h1>
+                <div class="line">
+                    <label >Firstname *: </label>
+                    <input type="text" ng-model="firstName" required />
+                </div>
+                <br>
+                <div class="line">
+                    <label >Lastname *: </label>
+                    <input type="text" ng-model="lastName" required />
+                    <!--<div ng-show="agedob">tahfnalkansf</div>-->
+                </div>
+                <!-- You may want to consider adding a "confirm" password box also -->
+                <br>
+                <div class="line">
+                    <label >Age *: </label>
+                    <input type="text"  ng-model="age" required />
+                    <!--<span  ng-hide="agetrue">Not a valid age!</span>-->
+                </div>
+                <br>
+                <div class="line" >
+                    <label >Date of Birth *: </label>
+                    <!--<input type="text" ng-model="dob" />-->
+                    <input type="text" ng-model="dob" required ng-pattern="/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/" name="dobfield"   required/>
+                    <!--<p ng-show="Form.dobfield.$error.pattern">Not    a valid number!</p>-->
+                    <!--<p ng-show="Form.dobfield.$error.required">This field is required!</p>-->
+                    <!--<span ng-if=" dob != 'cat' ">Not a valid date!</span>-->
+
+                </div>
+                <br>
+                <div class="line">
+                    <label >Gender *: </label>
+                    <select name="Gender" placeholder="Gender" required>
+                        <option value="">---Please select---</option> <!-- not selected / blank option -->
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </div>
+                <br>
+                <div class="line">
+                    <label >Phone *: </label>
+                    <input type="text" require ng-pattern="/^\d{10}$/" ng-model="phone" required>
+                    <!--<input type="text" ng-model="phone" />-->
+                </div>
+                <br>
+                <label style="float:left" >Patient information *: </label>
+                    <textarea  cols="80" rows="8" ng-model="pInfo" required>
+                    </textarea>
+                <br>
+                <br>
+                <button ng-click="submitForm()" >Submit Query</button>
+
+                <p>Note: Please make sure your details are correct before submitting form and that all fields marked with * are completed!.</p>
+            </form>
+        </div>
+    </body>
+</html>
+
+
+
+<!-- 
+Screen 1: A patient entry screen with fields like 
+firstname,
+ lastname,
+  age,
+   dob,
+    gender (dropdown),
+     phone,
+      free text information.
+       A submit button should validate and put the information in the database. Validation of fields are mandatory.
+Screen 2: A patient directory which shows a list of patients, with local search functionality based on patient name.
+
+ -->
+
+
+<!--this is angular function for select option-->
+
+<!--angular.module('ngrepeatSelect', [])-->
+<!--.controller('ExampleController', ['$scope', function($scope) {-->
+<!--$scope.data = {-->
+<!--model: null,-->
+<!--availableOptions: [-->
+<!--{id: '1', name: 'Option A'},-->
+<!--{id: '2', name: 'Option B'},-->
+<!--{id: '3', name: 'Option C'}-->
+<!--]-->
+<!--};-->
+<!--}]);-->
+
